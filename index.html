@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viaggio Sotto Controllo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" />
+    <style>
+      :root {
+        --color-primary: #3B82F6;
+        --color-on-primary: #FFFFFF;
+        --color-primary-container: #D9E2FF;
+        --color-on-primary-container: #001A40;
+        --color-secondary: #565E71;
+        --color-on-secondary: #FFFFFF;
+        --color-secondary-container: #DAE2F9;
+        --color-on-secondary-container: #131C2C;
+        --color-tertiary: #705574;
+        --color-on-tertiary: #FFFFFF;
+        --color-tertiary-container: #FAD8FC;
+        --color-on-tertiary-container: #29132E;
+        --color-error: #BA1A1A;
+        --color-on-error: #FFFFFF;
+        --color-error-container: #FFDAD6;
+        --color-on-error-container: #410002;
+        --color-background: #FDFBFF;
+        --color-on-background: #1A1C1E;
+        --color-surface: #FDFBFF;
+        --color-on-surface: #1A1C1E;
+        --color-surface-variant: #E1E2EC;
+        --color-on-surface-variant: #44474F;
+        --color-outline: #757780;
+        --color-shadow: #000000;
+        --color-inverse-surface: #2F3033;
+        --color-inverse-on-surface: #F1F0F4;
+        --color-inverse-primary: #AFC6FF;
+      }
+      .dark {
+        --color-primary: #AFC6FF;
+        --color-on-primary: #002F67;
+        --color-primary-container: #284777;
+        --color-on-primary-container: #D9E2FF;
+        --color-secondary: #BEC6DC;
+        --color-on-secondary: #283141;
+        --color-secondary-container: #3E4759;
+        --color-on-secondary-container: #DAE2F9;
+        --color-tertiary: #DDBCE0;
+        --color-on-tertiary: #3F2A44;
+        --color-tertiary-container: #573F5C;
+        --color-on-tertiary-container: #FAD8FC;
+        --color-error: #FFB4AB;
+        --color-on-error: #690005;
+        --color-error-container: #93000A;
+        --color-on-error-container: #FFDAD6;
+        --color-background: #1A1C1E;
+        --color-on-background: #E3E2E6;
+        --color-surface: #1A1C1E;
+        --color-on-surface: #E3E2E6;
+        --color-surface-variant: #44474F;
+        --color-on-surface-variant: #C4C6D0;
+        --color-outline: #8E9099;
+        --color-shadow: #000000;
+        --color-inverse-surface: #E3E2E6;
+        --color-inverse-on-surface: #2F3033;
+        --color-inverse-primary: #3B82F6;
+      }
+    </style>
+    <script>
+      // Prevents Flash of Unstyled Content (FOUC) for dark mode
+      if (localStorage.getItem('vsc_theme') === 'dark' || (!('vsc_theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          extend: {
+            colors: {
+              'primary': 'var(--color-primary)',
+              'on-primary': 'var(--color-on-primary)',
+              'primary-container': 'var(--color-primary-container)',
+              'on-primary-container': 'var(--color-on-primary-container)',
+              'secondary': 'var(--color-secondary)',
+              'on-secondary': 'var(--color-on-secondary)',
+              'secondary-container': 'var(--color-secondary-container)',
+              'on-secondary-container': 'var(--color-on-secondary-container)',
+              'tertiary': 'var(--color-tertiary)',
+              'on-tertiary': 'var(--color-on-tertiary)',
+              'tertiary-container': 'var(--color-tertiary-container)',
+              'on-tertiary-container': 'var(--color-on-tertiary-container)',
+              'error': 'var(--color-error)',
+              'on-error': 'var(--color-on-error)',
+              'error-container': 'var(--color-error-container)',
+              'on-error-container': 'var(--color-on-error-container)',
+              'background': 'var(--color-background)',
+              'on-background': 'var(--color-on-background)',
+              'surface': 'var(--color-surface)',
+              'on-surface': 'var(--color-on-surface)',
+              'surface-variant': 'var(--color-surface-variant)',
+              'on-surface-variant': 'var(--color-on-surface-variant)',
+              'outline': 'var(--color-outline)',
+              'shadow': 'var(--color-shadow)',
+              'inverse-surface': 'var(--color-inverse-surface)',
+              'inverse-on-surface': 'var(--color-inverse-on-surface)',
+              'inverse-primary': 'var(--color-inverse-primary)',
+            },
+            borderRadius: {
+              'xl': '1rem',      // 16px
+              '2xl': '1.5rem',   // 24px
+              '3xl': '2rem',     // 32px
+              'full': '9999px',
+            },
+            boxShadow: {
+              'md': '0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07)',
+              'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.07)',
+              'xl': '0 20px 25px -5px rgba(0, 0, 0, 0.07), 0 8px 10px -6px rgba(0, 0, 0, 0.07)',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "recharts": "https://aistudiocdn.com/recharts@^3.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.19.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-background text-on-background font-sans">
+    <div id="root"></div>
+  </body>
+</html>
